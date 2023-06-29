@@ -8,7 +8,7 @@ const { Header, Content, Footer } = Layout
 const App: React.FC = () => {
   return (
     <Layout className="layout">
-      <Header style={{ display: 'flex', alignItems: 'center' }}>
+      <Header>
         <div className="demo-logo" />
       </Header>
       <Content style={{ padding: '0 50px' }}>

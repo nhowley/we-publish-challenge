@@ -7,7 +7,6 @@ export const StyledCard = styled(Card)`
       box-shadow: 0 0 11px rgba(33,33,33,.2);
     }
 `
-
 export const StyledCardContent = styled.div`
     display: flex;
     flex-direction: column;
