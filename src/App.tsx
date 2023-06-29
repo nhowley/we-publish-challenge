@@ -1,7 +1,7 @@
 import React from 'react'
 import { Breadcrumb, Layout } from 'antd'
 import Categories from './categories.json'
-import { CategoryGrid } from './components/CategoryGrid'
+import { CategoryGrid } from './components/CategoryGrid/CategoryGrid'
 
 const { Header, Content, Footer } = Layout
 

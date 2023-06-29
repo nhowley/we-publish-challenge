@@ -1,5 +1,6 @@
 import type { FC } from 'react'
-import { List, Card, Typography } from 'antd'
+import { List } from 'antd'
+import { StyledCard, StyledCardContent, StyledCardTitle } from './CategoryGrid.styled'
 
 interface Props {
   categories: any[]
@@ -22,12 +23,12 @@ export const CategoryGrid: FC<Props> = ({
     dataSource={categories}
     renderItem={({ name, iconUrl }) => (
       <List.Item>
-        <Card>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <StyledCard>
+          <StyledCardContent>
             <img alt={name} src={iconUrl} width={50} height={50}/>
-            <Typography style={{ marginTop: '10px', fontWeight: 'bold' }}>{name}</Typography>
-          </div>
-        </Card>
+            <StyledCardTitle>{name}</StyledCardTitle>
+          </StyledCardContent>
+        </StyledCard>
       </List.Item>
     )}
   />
