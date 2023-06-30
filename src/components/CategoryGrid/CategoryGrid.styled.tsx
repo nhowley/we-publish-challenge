@@ -1,6 +1,10 @@
 import { Typography, Card } from 'antd'
 import styled from 'styled-components'
 
+export const StyledContainer = styled.div`
+    margin-top: 20px;
+`
+
 export const StyledCard = styled(Card)`
     &:hover{
       cursor: pointer;

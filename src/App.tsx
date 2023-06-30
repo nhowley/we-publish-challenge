@@ -1,9 +1,8 @@
 import React from 'react'
-import { Breadcrumb, Layout } from 'antd'
-import Categories from './categories.json'
-import { CategoryGrid } from './components/CategoryGrid/CategoryGrid'
+import { Layout } from 'antd'
+import CategoriesContainer from './components/CategoriesContainer/CategoriesContainer'
 
-const { Header, Content, Footer } = Layout
+const { Header, Footer } = Layout
 
 const App: React.FC = () => {
   return (
@@ -11,13 +10,7 @@ const App: React.FC = () => {
       <Header>
         <div className="demo-logo" />
       </Header>
-      <Content style={{ padding: '0 50px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Admin</Breadcrumb.Item>
-          <Breadcrumb.Item>Categories</Breadcrumb.Item>
-        </Breadcrumb>
-        <CategoryGrid categories={Categories}/>
-      </Content>
+      <CategoriesContainer />
       <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
     </Layout>
   )

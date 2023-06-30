@@ -1,15 +1,14 @@
 import type { FC } from 'react'
 import { List } from 'antd'
-import { StyledCard, StyledCardContent, StyledCardTitle } from './CategoryGrid.styled'
+import { StyledCard, StyledCardContent, StyledCardTitle, StyledContainer } from './CategoryGrid.styled'
 
 interface Props {
-  categories: any[]
+  categories: any[] // TODO change type
 }
 
-export const CategoryGrid: FC<Props> = ({
-  categories
-}) => {
+export const CategoryGrid: FC<Props> = ({ categories }) => {
   return (
+    <StyledContainer>
     <List
     grid={{
       gutter: 16,
@@ -32,5 +31,6 @@ export const CategoryGrid: FC<Props> = ({
       </List.Item>
     )}
   />
+  </StyledContainer>
   )
 }
