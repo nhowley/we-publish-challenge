@@ -1,9 +1,10 @@
 import type { FC } from 'react'
 import { List } from 'antd'
 import { StyledCard, StyledCardContent, StyledCardTitle, StyledContainer } from './CategoryGrid.styled'
+import type { Category } from '../../models/category.model'
 
 interface Props {
-  categories: any[] // TODO change type
+  categories: Category[]
 }
 
 export const CategoryGrid: FC<Props> = ({ categories }) => {

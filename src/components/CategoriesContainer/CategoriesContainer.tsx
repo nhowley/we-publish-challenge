@@ -1,20 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
-import { Breadcrumb, DatePicker, Layout, Typography } from 'antd'
+import { DatePicker } from 'antd'
 import Categories from '../../categories.json'
 import { CategoryGrid } from '../CategoryGrid'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 import { formatDate } from '../../utils/dates'
-
-const { Content } = Layout
+import { StyledContent, StyledBreadcrumb, StyledFilterLabel, StyledFiltersContainer } from './CategoriesContainer.styled'
 
 const CategoriesContainer: React.FC = () => {
   const [filteredCategories, setFilteredCategories] = useState(Categories)
   const [date, setDate] = useState(undefined)
   dayjs.extend(isBetween)
 
-  const filterCategoriesDate = (date: any): any => {
+  const filterCategoriesDate = (date: any): void => {
     const filteredCategories = Categories.filter(({ activeFrom, activeUntil }) => {
       const yearSelected = date !== undefined ? dayjs(date).get('year') : undefined
       const formattedActiveFrom = formatDate(activeFrom, yearSelected)
@@ -27,24 +25,21 @@ const CategoriesContainer: React.FC = () => {
     setFilteredCategories(filteredCategories)
   }
 
-  const onChangeDate = (date: any): any => {
+  const onChangeDate = (date: any): void => {
     const dateSelected = date !== null ? date.$d : undefined
     setDate(dateSelected)
     filterCategoriesDate(dateSelected)
   }
 
   return (
-      <Content style={{ padding: '0 50px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Admin</Breadcrumb.Item>
-            <Breadcrumb.Item>Categories</Breadcrumb.Item>
-          </Breadcrumb>
-          <div style={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
-            <Typography style={{ marginRight: '10px' }}>Active On:</Typography>
+      <StyledContent>
+          <StyledBreadcrumb items={[{ title: 'Admin' }, { title: 'Categories' }]} />
+          <StyledFiltersContainer>
+            <StyledFilterLabel>Active On:</StyledFilterLabel>
             <DatePicker onChange={onChangeDate} defaultValue={date}/>
-          </div>
+          </StyledFiltersContainer>
         <CategoryGrid categories={filteredCategories}/>
-      </Content>
+      </StyledContent>
   )
 }
 
