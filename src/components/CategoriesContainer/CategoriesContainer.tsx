@@ -19,16 +19,18 @@ const CategoriesContainer: React.FC = () => {
       const yearSelected = date !== undefined ? dayjs(date).get('year') : undefined
       const formattedActiveFrom = formatDate(activeFrom, yearSelected)
       const formattedActiveUntil = formatDate(activeUntil, yearSelected)
-      const isInActiveRange = dayjs(date).isBetween(formattedActiveFrom, formattedActiveUntil, 'day', '[]')
+      // if activeFrom is after activeUntil, modify year so the date range is correct
+      const activeFromNew = formattedActiveFrom !== undefined && formattedActiveUntil !== undefined && formattedActiveFrom > formattedActiveUntil ? dayjs(formattedActiveFrom).subtract(1, 'year') : formattedActiveFrom
+      const isInActiveRange = dayjs(date).isBetween(activeFromNew, formattedActiveUntil, 'day', '[]')
       return activeUntil === null || isInActiveRange
     })
     setFilteredCategories(filteredCategories)
   }
 
   const onChangeDate = (date: any): any => {
-    setDate(date?.$d)
-    filterCategoriesDate(date?.$d)
-    console.log('date', date.$d)
+    const dateSelected = date !== null ? date.$d : undefined
+    setDate(dateSelected)
+    filterCategoriesDate(dateSelected)
   }
 
   return (
@@ -37,8 +39,8 @@ const CategoriesContainer: React.FC = () => {
             <Breadcrumb.Item>Admin</Breadcrumb.Item>
             <Breadcrumb.Item>Categories</Breadcrumb.Item>
           </Breadcrumb>
-          <div style={{ display: 'flex', justifyContent: 'end' }}>
-            <Typography>Active On:</Typography>
+          <div style={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
+            <Typography style={{ marginRight: '10px' }}>Active On:</Typography>
             <DatePicker onChange={onChangeDate} defaultValue={date}/>
           </div>
         <CategoryGrid categories={filteredCategories}/>
