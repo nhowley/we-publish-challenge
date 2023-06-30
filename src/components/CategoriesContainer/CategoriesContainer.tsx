@@ -37,7 +37,7 @@ const CategoriesContainer: React.FC = () => {
           <StyledBreadcrumb items={[{ title: 'Admin' }, { title: 'Categories' }]} />
           <StyledFiltersContainer>
             <StyledFilterLabel>Active On:</StyledFilterLabel>
-            <DatePicker onChange={onChangeDate} defaultValue={date}/>
+            <DatePicker onChange={onChangeDate} defaultValue={date} format="DD-MM-YYYY"/>
           </StyledFiltersContainer>
         <CategoryGrid categories={filteredCategories}/>
       </StyledContent>
