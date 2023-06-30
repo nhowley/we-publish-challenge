@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 export const StyledContent = styled(Content)`
   padding: 0 50px;
+  min-height: 100vh;
 `
 
 export const StyledBreadcrumb = styled(Breadcrumb)`
@@ -13,8 +14,14 @@ export const StyledBreadcrumb = styled(Breadcrumb)`
 
 export const StyledFiltersContainer = styled.div`
   display: flex;
-  justify-content: end;
-  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    justify-content: end;
+    flex-direction: row;
+    align-items: center;
+  }
+  
 `
 
 export const StyledFilterLabel = styled(Typography)`

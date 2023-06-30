@@ -6,12 +6,10 @@ const { Header, Footer } = Layout
 
 const App: React.FC = () => {
   return (
-    <Layout className="layout">
-      <Header>
-        <div className="demo-logo" />
-      </Header>
+    <Layout>
+      <Header />
       <CategoriesContainer />
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+      <Footer style={{ textAlign: 'center', marginTop: 'auto' }}>Ant Design ©2023 Created by Ant UED</Footer>
     </Layout>
   )
 }

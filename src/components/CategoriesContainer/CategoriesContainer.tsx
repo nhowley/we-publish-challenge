@@ -18,7 +18,8 @@ const CategoriesContainer: React.FC = () => {
       const formattedActiveFrom = formatDate(activeFrom, yearSelected)
       const formattedActiveUntil = formatDate(activeUntil, yearSelected)
       // if activeFrom is after activeUntil, modify year so the date range is correct
-      const activeFromNew = formattedActiveFrom !== undefined && formattedActiveUntil !== undefined && formattedActiveFrom > formattedActiveUntil ? dayjs(formattedActiveFrom).subtract(1, 'year') : formattedActiveFrom
+      const isActiveFromAfterActiveUntil = formattedActiveFrom !== undefined && formattedActiveUntil !== undefined && formattedActiveFrom > formattedActiveUntil
+      const activeFromNew = isActiveFromAfterActiveUntil ? dayjs(formattedActiveFrom).subtract(1, 'year') : formattedActiveFrom
       const isInActiveRange = dayjs(date).isBetween(activeFromNew, formattedActiveUntil, 'day', '[]')
       return activeUntil === null || isInActiveRange
     })
