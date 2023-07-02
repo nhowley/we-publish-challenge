@@ -1,4 +1,5 @@
 import { Breadcrumb } from 'antd'
+import Search from 'antd/es/input/Search'
 import { Content } from 'antd/es/layout/layout'
 import Typography from 'antd/es/typography/Typography'
 import styled from 'styled-components'
@@ -21,9 +22,14 @@ export const StyledFiltersContainer = styled.div`
     flex-direction: row;
     align-items: center;
   }
-  
 `
 
 export const StyledFilterLabel = styled(Typography)`
   margin-right: 10px;
+`
+export const StyledSearch = styled(Search)`
+  margin-right: 10px;
+  @media (min-width: 768px) {
+    width: 30%;
+  }
 `

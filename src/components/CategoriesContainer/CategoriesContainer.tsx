@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { DatePicker, ConfigProvider } from 'antd'
 import Categories from '../../categories.json'
 import { CategoryGrid } from '../CategoryGrid'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 import { formatDate } from '../../utils/dates'
-import { StyledContent, StyledBreadcrumb, StyledFilterLabel, StyledFiltersContainer } from './CategoriesContainer.styled'
+import { StyledContent, StyledBreadcrumb, StyledFilterLabel, StyledFiltersContainer, StyledSearch } from './CategoriesContainer.styled'
 
 const CategoriesContainer: React.FC = () => {
   const [filteredCategories, setFilteredCategories] = useState(Categories)
+  const [filteredCategoriesDate, setFilteredCategoriesDate] = useState(Categories)
+  const [filteredCategoriesSearch, setFilteredCategoriesSearch] = useState(Categories)
   const [date, setDate] = useState(undefined)
   dayjs.extend(isBetween)
 
@@ -23,7 +25,7 @@ const CategoriesContainer: React.FC = () => {
       const isInActiveRange = dayjs(date).isBetween(activeFromNew, formattedActiveUntil, 'day', '[]')
       return activeUntil === null || isInActiveRange
     })
-    setFilteredCategories(filteredCategories)
+    setFilteredCategoriesDate(filteredCategories)
   }
 
   const onChangeDate = (date: any): void => {
@@ -32,12 +34,32 @@ const CategoriesContainer: React.FC = () => {
     filterCategoriesDate(dateSelected)
   }
 
+  const onSearch = (value: string): void => {
+    const searchResults = Categories.filter(({ name }) => {
+      return name.toLowerCase().includes(value.toLowerCase())
+    })
+    setFilteredCategoriesSearch(searchResults)
+  }
+
+  const filterCategories = (): void => {
+    const filteredArray = filteredCategoriesDate.filter(value => filteredCategoriesSearch.includes(value))
+    setFilteredCategories(filteredArray)
+  }
+
+  useEffect(() => {
+    filterCategories()
+  }, [filteredCategoriesDate, filteredCategoriesSearch])
+
   return (
       <StyledContent>
           <StyledBreadcrumb items={[{ title: 'Admin' }, { title: 'Categories' }]} />
           <StyledFiltersContainer>
-            <StyledFilterLabel>Active On:</StyledFilterLabel>
               <ConfigProvider theme={{ token: { colorPrimary: '#F3C13A' } }}>
+                <StyledSearch
+                  placeholder="Search categories"
+                  allowClear
+                  onSearch={onSearch} />
+                <StyledFilterLabel>Active On:</StyledFilterLabel>
                 <DatePicker onChange={onChangeDate} defaultValue={date} format="DD-MM-YYYY" />
               </ConfigProvider>
           </StyledFiltersContainer>
