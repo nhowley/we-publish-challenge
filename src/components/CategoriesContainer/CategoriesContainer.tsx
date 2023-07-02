@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { DatePicker } from 'antd'
+import { DatePicker, ConfigProvider } from 'antd'
 import Categories from '../../categories.json'
 import { CategoryGrid } from '../CategoryGrid'
 import dayjs from 'dayjs'
@@ -37,7 +37,9 @@ const CategoriesContainer: React.FC = () => {
           <StyledBreadcrumb items={[{ title: 'Admin' }, { title: 'Categories' }]} />
           <StyledFiltersContainer>
             <StyledFilterLabel>Active On:</StyledFilterLabel>
-            <DatePicker onChange={onChangeDate} defaultValue={date} format="DD-MM-YYYY"/>
+              <ConfigProvider theme={{ token: { colorPrimary: '#F3C13A' } }}>
+                <DatePicker onChange={onChangeDate} defaultValue={date} format="DD-MM-YYYY" />
+              </ConfigProvider>
           </StyledFiltersContainer>
         <CategoryGrid categories={filteredCategories}/>
       </StyledContent>

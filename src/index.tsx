@@ -9,7 +9,7 @@ ReactDOM.render(
     <Router>
        <Routes>
         <Route path="/" element={<CategoriesPage/>} />
-        </Routes>s
+        </Routes>
      </Router>,
     document.getElementById('root')
 )
