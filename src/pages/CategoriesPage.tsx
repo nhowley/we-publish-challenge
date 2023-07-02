@@ -1,15 +1,16 @@
 import React from 'react'
 import { Layout } from 'antd'
 import CategoriesContainer from '../components/CategoriesContainer/CategoriesContainer'
+import { StyledFooter } from './CategoriesPage.styled'
 
-const { Header, Footer } = Layout
+const { Header } = Layout
 
 const CategoriesPage: React.FC = () => {
   return (
     <Layout>
       <Header />
       <CategoriesContainer />
-      <Footer style={{ textAlign: 'center', marginTop: 'auto' }}>Ant Design ©2023 Created by Ant UED</Footer>
+      <StyledFooter>Ant Design ©2023 Created by Ant UED</StyledFooter>
     </Layout>
   )
 }
