@@ -1,10 +1,10 @@
 import React from 'react'
 import { Layout } from 'antd'
-import CategoriesContainer from './components/CategoriesContainer/CategoriesContainer'
+import CategoriesContainer from '../components/CategoriesContainer/CategoriesContainer'
 
 const { Header, Footer } = Layout
 
-const App: React.FC = () => {
+const CategoriesPage: React.FC = () => {
   return (
     <Layout>
       <Header />
@@ -14,4 +14,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default CategoriesPage

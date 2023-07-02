@@ -2,6 +2,7 @@ import type { FC } from 'react'
 import { List } from 'antd'
 import { StyledCard, StyledCardContent, StyledCardTitle, StyledContainer } from './CategoryGrid.styled'
 import type { Category } from '../../models/category.model'
+import { Link } from 'react-router-dom'
 
 interface Props {
   categories: Category[]
@@ -21,14 +22,16 @@ export const CategoryGrid: FC<Props> = ({ categories }) => {
       xxl: 3
     }}
     dataSource={categories}
-    renderItem={({ name, iconUrl }) => (
+    renderItem={({ name, iconUrl, slug }) => (
       <List.Item>
-        <StyledCard>
-          <StyledCardContent>
-            <img alt={name} src={iconUrl} width={50} height={50}/>
-            <StyledCardTitle>{name}</StyledCardTitle>
-          </StyledCardContent>
-        </StyledCard>
+        <Link to={slug}>
+          <StyledCard>
+            <StyledCardContent>
+              <img alt={name} src={iconUrl} width={50} height={50}/>
+              <StyledCardTitle>{name}</StyledCardTitle>
+            </StyledCardContent>
+          </StyledCard>
+        </Link>
       </List.Item>
     )}
   />
