@@ -20,9 +20,9 @@ To run the project, follow these steps:
 
 3. Start the project:
 
-```shell
-npm start
-```
+   ```shell
+   npm start
+   ```
 
 These steps will clone the repository to your local machine, install the necessary dependencies using Yarn, and start the project using the npm start command.
 
