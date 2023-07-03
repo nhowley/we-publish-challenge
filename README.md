@@ -1,7 +1,5 @@
 ## Project WePublish Challenge
 
-This is a sample README file for a Git repository. It provides instructions for setting up and running a project. The README includes information about cloning the repository, installing dependencies, and starting the project. It also includes details about additional features such as TypeScript and ESLint configurations. The README is written in Markdown format for easy readability and formatting.
-
 ### Steps to Run the Project
 
 To run the project, follow these steps:
