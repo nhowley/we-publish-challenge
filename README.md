@@ -9,7 +9,7 @@ To run the project, follow these steps:
 1. Clone the repository:
 
    ```shell
-   git clone <repository_url>
+   git clone https://github.com/nhowley/we-publish-challenge.git
 
    ```
 
